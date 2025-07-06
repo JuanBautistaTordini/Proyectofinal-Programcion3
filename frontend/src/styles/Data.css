@@ -3,7 +3,7 @@
   background-color: white;
 }
 
-.container h2 {
+.data_titulo {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
@@ -42,8 +42,8 @@
   color: #2c3e50;
 }
 
-.data_grid p {
-  color: #111111;
+.parrafo_data {
+  color: #6d6c81;
   font-weight: bold;
 }
 

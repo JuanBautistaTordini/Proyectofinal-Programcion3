@@ -1,0 +1,82 @@
+.reserva-confirmada {
+    padding: 120px 0 80px;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+  }
+  
+  .confirmacion-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .icono-exito {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .confirmacion-card h1 {
+    color: #27ae60;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .mensaje-principal {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  .proximos-pasos {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+  
+  .proximos-pasos h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .proximos-pasos ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .proximos-pasos li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ecf0f1;
+  }
+  
+  .proximos-pasos li:before {
+    content: "→ ";
+    color: #3498db;
+    font-weight: bold;
+  }
+  
+  .boton-inicio {
+    background-color: #3498db;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .boton-inicio:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+  }
+  

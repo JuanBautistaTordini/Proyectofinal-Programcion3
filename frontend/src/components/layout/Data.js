@@ -28,13 +28,13 @@ function Data() {
   return (
     <section className="data">
       <div className="container">
-        <h2>Somos los Mejores</h2>
+        <h2 className="data_titulo">Somos los Mejores</h2>
         <div className="data_grid">
           {data.map((data, index) => (
             <div key={index} className="data_item">
               <div className="icono_data">{data.icono}</div>
               <h3 className="titulo_data">{data.titulo}</h3>
-              <p>{data.descripcion}</p>
+              <p className="parrafo_data">{data.descripcion}</p>
             </div>
           ))}
         </div>

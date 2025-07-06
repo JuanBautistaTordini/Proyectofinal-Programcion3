@@ -4,26 +4,12 @@
     padding: 20px 0 20px;
     margin-top: auto;
   }
-  
 
-  
- 
-  
-  
-  .container p {
+  .parrafo_footer {
     border-top: 1px solid #34495e;
     padding-top: 2rem;
     text-align: center;
     color: #bdc3c7;
   }
   
-  @media (max-width: 768px) {
-    .footer {
-      padding: 40px 0 20px;
-    }
-  
-    .footer-content {
-      gap: 2rem;
-    }
-  }
   

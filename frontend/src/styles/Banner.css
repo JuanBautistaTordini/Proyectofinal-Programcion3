@@ -12,13 +12,13 @@
   color: white;
 }
 
-.container_banner h1 {
+.titulo_banner {
   font-size: 4rem;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.container_banner p {
+.parrafo_banner {
   font-size: 1.5rem;
   margin-bottom: 2rem;
   max-width: 600px;
@@ -75,11 +75,11 @@
 }
 
 @media (max-width: 768px) {
-  .container_banner h1 {
+  .titulo_banner {
     font-size: 2.5rem;
   }
 
-  .container_banner p {
+  .parrafo_banner {
     font-size: 1.2rem;
   }
 

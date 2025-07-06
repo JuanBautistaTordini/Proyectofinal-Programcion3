@@ -1,15 +1,20 @@
--- Archivo de inicialización de la base de datos
--- Este archivo se ejecuta automáticamente cuando se crea el contenedor de PostgreSQL
+-- crear aca la base de datos con sql
+-- Tabla packages
+-- id
+-- titulo
+-- descripcion
+-- location
+-- price
 
--- Crear extensiones útiles
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+-- Tabla reservations
+-- id
+-- name
+-- email
+-- package_id (FK)
+-- reservation_date
+-- date_created
 
--- Crear esquemas adicionales si es necesario
--- CREATE SCHEMA IF NOT EXISTS analytics;
-
--- Insertar datos iniciales si es necesario
--- INSERT INTO users (name, email) VALUES ('Admin', 'admin@example.com');
-
--- Mensaje de confirmación
-SELECT 'Base de datos inicializada correctamente' AS status;
+-- Tabla admin_users
+-- id
+-- email
+-- password_hash
