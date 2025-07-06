@@ -1,0 +1,90 @@
+.banner {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+    url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Qt2GI8u3RrVxUyv56AisG1adpPTjCN.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.container_banner h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.container_banner p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.botones_banner {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.boton_primario {
+  background-color: #3498db;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.boton_primario:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.boton_secundario {
+  background-color: transparent;
+  color: white;
+  padding: 1rem 2rem;
+  border: 2px solid white;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.boton_secundario:hover {
+  background-color: white;
+  color: #2c3e50;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .container_banner h1 {
+    font-size: 2.5rem;
+  }
+
+  .container_banner p {
+    font-size: 1.2rem;
+  }
+
+  .container_banner {
+    flex-direction: column;
+    align-items: center;
+  }
+}
