@@ -31,7 +31,7 @@ function Home() {
       descripcion: "Capturá paisajes asombrosos con orientación profesional",
       precio: "$399",
       imagen: "https://www.rionegro.com.ar/wp-content/uploads/2023/10/patagonia-perito-moreno.jpg",
-    },
+    }
   ]
 
   const handleCardClick = (id) => {
