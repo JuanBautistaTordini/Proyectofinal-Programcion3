@@ -33,6 +33,7 @@ function Login() {
 
   return (
     <div className="admin-login">
+      <h1>Patagonia Trip</h1>
       <div className="login-container">
         <div className="login-card">
           <h2>Acceso Administrativo</h2>

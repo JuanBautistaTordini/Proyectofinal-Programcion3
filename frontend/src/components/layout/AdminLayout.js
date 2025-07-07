@@ -12,17 +12,15 @@ function AdminLayout({ children }) {
   }
 
   const menuItems = [
-    { path: "/admin/dashboard", label: "Dashboard", icon: "📊" },
-    { path: "/admin/paquetes", label: "Paquetes", icon: "🎒" },
-    { path: "/admin/reservaciones", label: "Reservaciones", icon: "📋" },
+    { path: "/admin/dashboard", label: "Dashboard" },
+    { path: "/admin/paquetes", label: "Paquetes" },
+    { path: "/admin/reservaciones", label: "Reservaciones" },
   ]
 
   return (
     <div className="admin-layout">
+     
       <aside className="admin-sidebar">
-        <div className="sidebar-header">
-          <h2>Admin Panel</h2>
-        </div>
         <nav className="sidebar-nav">
           {menuItems.map((item) => (
             <button
@@ -37,15 +35,18 @@ function AdminLayout({ children }) {
         </nav>
         <div className="sidebar-footer">
           <button className="logout-btn" onClick={handleLogout}>
-            🚪 Cerrar Sesión
+             Cerrar Sesión
           </button>
         </div>
       </aside>
 
       <main className="admin-main">
         <header className="admin-header">
+          <div className="sidebar-header">
+            <h2>Patagonia Trip Administracion</h2>
+          </div>
           <button className="home-btn" onClick={() => navigate("/")}>
-            🏠 Ver Sitio Público
+             Ver Sitio Público
           </button>
         </header>
         <div className="admin-content">{children}</div>

@@ -26,7 +26,7 @@ function App() {
 
           {/* rutas admin privadas */}
           {/* si es /admin : */}
-          {/* <Route path="/admin" element={<Login />} /> */}
+          <Route path="/admin" element={<Login />} /> 
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/paquetes" element={<AdminPaquete />} />
