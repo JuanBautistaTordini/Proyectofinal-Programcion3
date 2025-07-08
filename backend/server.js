@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const routes = require('./routes');
+const config = require('./config/config');
+const sequelize = require('./config/database')
 require('dotenv').config();
 
 const { sequelize } = require('./models');

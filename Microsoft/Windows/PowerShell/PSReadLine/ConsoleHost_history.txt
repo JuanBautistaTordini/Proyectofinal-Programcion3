@@ -1,0 +1,20 @@
+git pull
+git checkout -b simon
+git checkout simon
+git pull origin main
+docker-compose up -d
+docker-compose logs app_database
+docker-compose logs database
+docker-compose down -v
+docker-compose up -d
+docker-compose logs database
+docker-compose down -v
+docker-compose up -d
+docker-compose down -v
+docker-compose up -d
+docker-compose logs database
+docker-compose down -v
+docker-compose up -d
+docker-compose down -v
+docker-compose up -d
+git add .

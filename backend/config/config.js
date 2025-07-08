@@ -2,6 +2,7 @@
 require('dotenv').config();
 
 module.exports = {
+  jwtSecret: process.env.JWT_SECRET || 'your_jwt_secret_key', // cambiar palabra secreta de jwt
   development: {
     username: process.env.DB_USER || 'app_user',
     password: process.env.DB_PASSWORD || 'app_password',

@@ -1,5 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const packageController = require('../controllers/packages.controller');
+const reservationController = require('../controllers/reservations.controller');
+const adminController = require('../controllers/admin_users.controller');
+const { authenticateJWT } = require('../middleware/verifyToken.middleware');
 
 // Ruta de prueba
 router.get('/health', (req, res) => {
@@ -12,15 +16,31 @@ router.get('/health', (req, res) => {
 });
 
 // Ruta de ejemplo
-router.get('/test', (req, res) => {
-  res.json({
-    message: 'Endpoint de prueba',
-    data: {
-      backend: 'Express',
-      database: 'PostgreSQL',
-      orm: 'Sequelize'
-    }
-  });
-});
+// router.get('/test', (req, res) => {
+//  res.json({
+//     message: 'Endpoint de prueba',
+//     data: {
+//       backend: 'Express',
+//       database: 'PostgreSQL',
+//       orm: 'Sequelize'
+//     }
+//   });
+// });
+
+
+// Rutas públicas
+
+router.get('/packages', packageController.getAllPackages);
+router.get('/packages/:id', packageController.getPackageById);
+router.post('/reservations', reservationController.createReservation);
+router.post('/admin/login', adminController.login);
+
+// Rutas protegidas (solo admin)
+
+router.post('/packages', authenticateJWT, packageController.createPackage);
+router.put('/packages/:id', authenticateJWT, packageController.updatePackage);
+router.delete('/packages/:id', authenticateJWT, packageController.deletePackage);
+router.get('/reservations', authenticateJWT, reservationController.getAllReservations);
+
 
 module.exports = router;
