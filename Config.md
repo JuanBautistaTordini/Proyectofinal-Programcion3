@@ -1264,4 +1264,22 @@ Para acceder al panel de administración, usa:
 - Contraseña: admin123
 
 Este es un plan completo para implementar la aplicación de paquetes turísticos según tus requerimientos. Puedes ajustar cualquier parte según tus necesidades específicas.
-        
+
+```bash
+
+git checkout main
+
+git merge simon
+
+ERROR POSIBLE: merge: simon - not something we can merge
+
+Did you mean this?
+        origin/simon
+
+SOLUCION: $ git fetch origin simon:simon
+
+Luego:
+$ git merge simon
+
+$ git push origin main
+```
