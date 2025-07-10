@@ -1,3 +1,4 @@
+// models/admin_users.model.js
 module.exports = (sequelize, DataTypes) => {
   const AdminUser = sequelize.define('AdminUser', {
     id: {
@@ -16,8 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     tableName: 'admin_users',
-    timestamps: true,
-    updatedAt: false
+    timestamps: false
   });
 
   return AdminUser;

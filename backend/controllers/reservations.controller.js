@@ -14,20 +14,29 @@ exports.createReservation = async (req, res) => {
       reservation_date
     });
 
-    res.status(201).json(newReservation);
+    res.status(201).json({
+      status: 'success',
+      message: 'Reserva creada exitosamente',
+      reservation: newReservation
+    });
+    
   } catch (error) {
     console.error('Error al crear reserva:', error);
     res.status(500).json({ message: 'Error al crear reserva' });
   }
 };
 
-exports.deleteReservation = async (req, res) => {
+exports.deleteReservationById = async (req, res) => {
   try {
     const reservation = await Reservation.findByPk(req.params.id);
     if (!reservation) return res.status(404).json({ message: 'Reserva no encontrada' });
 
     await reservation.destroy();
-    res.status(204).send();
+    res.status(201).json({
+      status: 'success',
+      message: 'Reserva eliminada exitosamente',
+      deleted: reservation
+    });
   } catch (error) {
     console.error('Error al eliminar reserva:', error);
     res.status(500).json({ message: 'Error al eliminar reserva' });
@@ -39,24 +48,16 @@ exports.getAllReservations = async (req, res) => {
     const reservations = await Reservation.findAll({
       include: [{ model: Package, attributes: ['title'] }]
     });
-    res.json(reservations);
+
+    res.status(201).json({
+      status: 'success',
+      message: 'Reservas obtenidas exitosamente',
+      allReservations: reservations
+    });
   } catch (error) {
     console.error('Error al obtener reservas:', error);
     res.status(500).json({ message: 'Error al obtener reservas' });
   }
 };
 
-exports.getReservationById = async (req, res) => {
-  try {
-    const reservation = await Reservation.findByPk(req.params.id, {
-      include: [{ model: Package, attributes: ['title'] }]
-    });
 
-    if (!reservation) return res.status(404).json({ message: 'Reserva no encontrada' });
-
-    res.json(reservation);
-  } catch (error) {
-    console.error('Error al obtener reserva:', error);
-    res.status(500).json({ message: 'Error al obtener reserva' });
-  }
-};

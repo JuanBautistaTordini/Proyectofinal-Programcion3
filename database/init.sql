@@ -43,7 +43,7 @@ CREATE TABLE admin_users (
   password_hash VARCHAR(255) NOT NULL
 );
 
-INSERT INTO admin_users (email, password_hash) VALUES ('admin@example.com', 'admin123');
+INSERT INTO admin_users (email, password_hash) VALUES ('admin@example.com', '$2a$10$KykYBBmQmmesQE76Sl/sgO/Quk3W8EJayRN7whDvKvtZ1q5Upvzc6');
 
 INSERT INTO packages (title, description, location, price, image_url) VALUES 
 ('Bariloche Aventura', 'Disfruta de 5 días en Bariloche con excursiones de aventura incluidas.', 'Bariloche, Río Negro', 150000.00, 'https://example.com/bariloche.jpg'),

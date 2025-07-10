@@ -1,0 +1,220 @@
+{
+	"id": "cde71473-d1ec-4abb-a826-c47cb0ff0ace",
+	"name": "PROYECTOFINAL-PROGRA",
+	"timestamp": "2025-07-10T21:17:56.716Z",
+	"collection_id": "39820955-adba9143-8226-465d-9adb-7104a6b9a468",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-07-10T21:17:55.022Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "7308dd2f-4bd7-4327-a7d1-908da6c7fb91",
+			"name": "createReservation",
+			"url": "http://localhost:3001/api/reservations",
+			"time": 85,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				85
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "833d05d5-5b0a-49dc-8f60-ade3d17b84b2",
+			"name": "getAllPackages",
+			"url": "http://localhost:3001/api/packages",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a1fefeeb-4760-4853-a0dd-a320fabbb1f5",
+			"name": "getPackageById",
+			"url": "http://localhost:3001/api/packages/1",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2fcb9133-4709-4c3d-b085-84d77f92a6e2",
+			"name": "login",
+			"url": "http://localhost:3001/api/admin/login",
+			"time": 203,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				203
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "661c5943-8a49-427d-b204-711944c4065e",
+			"name": "CreatePackage",
+			"url": "http://localhost:3001/api/packages",
+			"time": 14,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "dc37e24c-72ee-44fd-8bba-de635b2ccc96",
+			"name": "updatePackage",
+			"url": "http://localhost:3001/api/packages/1",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ef37cda1-38c1-4948-bd13-b78024015f46",
+			"name": "deletePackage",
+			"url": "http://localhost:3001/api/packages/1",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a4370e7d-2fef-4afa-8db3-8552ec2cb502",
+			"name": "getAllReservations",
+			"url": "http://localhost:3001/api/reservations",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				15
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "80834323-04cd-4bd4-9f2d-a0ef08b1d30a",
+			"name": "deleteReservationById",
+			"url": "http://localhost:3001/api/reservations/2",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 354,
+	"collection": {
+		"requests": [
+			{
+				"id": "7308dd2f-4bd7-4327-a7d1-908da6c7fb91",
+				"method": "POST"
+			},
+			{
+				"id": "833d05d5-5b0a-49dc-8f60-ade3d17b84b2",
+				"method": "GET"
+			},
+			{
+				"id": "a1fefeeb-4760-4853-a0dd-a320fabbb1f5",
+				"method": "GET"
+			},
+			{
+				"id": "2fcb9133-4709-4c3d-b085-84d77f92a6e2",
+				"method": "POST"
+			},
+			{
+				"id": "661c5943-8a49-427d-b204-711944c4065e",
+				"method": "POST"
+			},
+			{
+				"id": "dc37e24c-72ee-44fd-8bba-de635b2ccc96",
+				"method": "PUT"
+			},
+			{
+				"id": "ef37cda1-38c1-4948-bd13-b78024015f46",
+				"method": "DELETE"
+			},
+			{
+				"id": "a4370e7d-2fef-4afa-8db3-8552ec2cb502",
+				"method": "GET"
+			},
+			{
+				"id": "80834323-04cd-4bd4-9f2d-a0ef08b1d30a",
+				"method": "DELETE"
+			}
+		]
+	}
+}

@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const routes = require('./routes');
 const config = require('./config/config');
 const { sequelize } = require('./models');
+const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 const app = express();
