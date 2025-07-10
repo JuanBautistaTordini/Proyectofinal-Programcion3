@@ -4,11 +4,9 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const routes = require('./routes');
 const config = require('./config/config');
-const sequelize = require('./config/database')
-require('dotenv').config();
-
+// const sequelize = require('./config/database')
 const { sequelize } = require('./models');
-const routes = require('./routes');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -70,7 +68,7 @@ async function startServer() {
       console.log('✅ Database synchronized');
     }
     
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 Server is running on port ${PORT}`);
       console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
       console.log(`🔗 API available at: http://localhost:${PORT}/api`);
@@ -78,7 +76,7 @@ async function startServer() {
   } catch (error) {
     console.error('❌ Unable to start server:', error);
     // Continuar sin base de datos para desarrollo
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`⚠️  Server started without database on port ${PORT}`);
     });
   }
@@ -106,3 +104,5 @@ process.on('SIGINT', async () => {
   }
   process.exit(0);
 });
+
+

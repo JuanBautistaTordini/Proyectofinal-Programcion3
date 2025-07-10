@@ -15,17 +15,17 @@ router.get('/health', (req, res) => {
   });
 });
 
-// Ruta de ejemplo
-// router.get('/test', (req, res) => {
-//  res.json({
-//     message: 'Endpoint de prueba',
-//     data: {
-//       backend: 'Express',
-//       database: 'PostgreSQL',
-//       orm: 'Sequelize'
-//     }
-//   });
-// });
+//Ruta de ejemplo
+router.get('/test', (req, res) => {
+ res.json({
+    message: 'Endpoint de prueba',
+    data: {
+      backend: 'Express',
+      database: 'PostgreSQL',
+      orm: 'Sequelize'
+    }
+  });
+});
 
 
 // Rutas públicas
@@ -36,7 +36,6 @@ router.post('/reservations', reservationController.createReservation);
 router.post('/admin/login', adminController.login);
 
 // Rutas protegidas (solo admin)
-
 router.post('/packages', authenticateJWT, packageController.createPackage);
 router.put('/packages/:id', authenticateJWT, packageController.updatePackage);
 router.delete('/packages/:id', authenticateJWT, packageController.deletePackage);

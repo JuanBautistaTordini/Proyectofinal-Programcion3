@@ -1,9 +1,6 @@
 // backend/models/index.js
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const config = require('../config/database');
-const Packages = require('./packages.model');
-const Reservations = require('./reservations.model');
-const AdminUsers = require('./admin_users.model');
 
 const env = process.env.NODE_ENV || 'development';
 const dbConfig = config[env];
@@ -22,12 +19,12 @@ const sequelize = new Sequelize(
   }
 );
 
-//importar modelos
-const Packages = require('./packages.model')(sequelize, DataTypes)
-const Reservations = require('./reservations.model')(sequelize, DataTypes)
-const AdminUsers = require('./admin_users.model')(sequelize, DataTypes)
+// importar modelos correctamente
+const Packages = require('./packages.model')(sequelize, DataTypes);
+const Reservations = require('./reservations.model')(sequelize, DataTypes);
+const AdminUsers = require('./admin_users.model')(sequelize, DataTypes);
 
-//relaciones
+// relaciones
 Packages.hasMany(Reservations, { foreignKey: 'package_id' });
 Reservations.belongsTo(Packages, { foreignKey: 'package_id' });
 
