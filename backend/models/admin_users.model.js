@@ -1,34 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
-  const Reservation = sequelize.define('Reservation', {
+  const AdminUser = sequelize.define('AdminUser', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
-    package_id: {
-      type: DataTypes.INTEGER,
+    password_hash: {
+      type: DataTypes.STRING,
       allowNull: false
-    },
-    reservation_date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false
-    },
-    date_created: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
     }
   }, {
-    tableName: 'reservations',
-    timestamps: false
+    tableName: 'admin_users',
+    timestamps: true,
+    updatedAt: false
   });
 
-  return Reservation;
+  return AdminUser;
 };

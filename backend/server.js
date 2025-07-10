@@ -4,7 +4,6 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const routes = require('./routes');
 const config = require('./config/config');
-// const sequelize = require('./config/database')
 const { sequelize } = require('./models');
 require('dotenv').config();
 

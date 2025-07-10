@@ -19,19 +19,19 @@ const sequelize = new Sequelize(
   }
 );
 
-// importar modelos correctamente
-const Packages = require('./packages.model')(sequelize, DataTypes);
-const Reservations = require('./reservations.model')(sequelize, DataTypes);
-const AdminUsers = require('./admin_users.model')(sequelize, DataTypes);
+// Importar modelos
+const Package = require('./packages.model')(sequelize, DataTypes);
+const Reservation = require('./reservations.model')(sequelize, DataTypes);
+const AdminUser = require('./admin_users.model')(sequelize, DataTypes);
 
-// relaciones
-Packages.hasMany(Reservations, { foreignKey: 'package_id' });
-Reservations.belongsTo(Packages, { foreignKey: 'package_id' });
+// Relaciones
+Package.hasMany(Reservation, { foreignKey: 'package_id' });
+Reservation.belongsTo(Package, { foreignKey: 'package_id' });
 
 module.exports = {
   sequelize,
   Sequelize,
-  Packages,
-  Reservations,
-  AdminUsers
+  Package,
+  Reservation,
+  AdminUser
 };

@@ -1,3 +1,4 @@
+// backend/routes/index.js
 const express = require('express');
 const router = express.Router();
 const packageController = require('../controllers/packages.controller');
@@ -30,9 +31,9 @@ router.get('/test', (req, res) => {
 
 // Rutas públicas
 
-router.get('/packages', packageController.getAllPackages);
-router.get('/packages/:id', packageController.getPackageById);
-router.post('/reservations', reservationController.createReservation);
+router.get('/packages', packageController.getAllPackages);//anda
+router.get('/packages/:id', packageController.getPackageById); //anda
+router.post('/reservations', reservationController.createReservation);//anda
 router.post('/admin/login', adminController.login);
 
 // Rutas protegidas (solo admin)
@@ -40,6 +41,7 @@ router.post('/packages', authenticateJWT, packageController.createPackage);
 router.put('/packages/:id', authenticateJWT, packageController.updatePackage);
 router.delete('/packages/:id', authenticateJWT, packageController.deletePackage);
 router.get('/reservations', authenticateJWT, reservationController.getAllReservations);
+router.delete('/reservations/:id', authenticateJWT, reservationController.deleteReservation);
 
 
 module.exports = router;
