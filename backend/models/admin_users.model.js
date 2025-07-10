@@ -1,26 +1,34 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+module.exports = (sequelize, DataTypes) => {
+  const Reservation = sequelize.define('Reservation', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    package_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    reservation_date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    date_created: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    }
+  }, {
+    tableName: 'reservations',
+    timestamps: false
+  });
 
-const AdminUser = sequelize.define('AdminUser', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true
-  },
-  password_hash: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
-}, {
-  tableName: 'admin_users',
-  timestamps: true,
-  createdAt: 'created_at',
-  updatedAt: false
-});
-
-module.exports = AdminUser;
+  return Reservation;
+};

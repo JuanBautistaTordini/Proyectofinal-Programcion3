@@ -26,34 +26,34 @@ exports.createReservation = async (req, res) => {
 };
 
 //Editar una reserva (solo admin)
-exports.updateReservation = async (req, res) => {
-  try {
-    const { name, email, package_id, reservation_date } = req.body;
-    const reservation = await Reservation.findByPk(req.params.id);
+// exports.updateReservation = async (req, res) => {
+//   try {
+//     const { name, email, package_id, reservation_date } = req.body;
+//     const reservation = await Reservation.findByPk(req.params.id);
     
-    if (!reservation) {
-      return res.status(404).json({ message: 'Reserva no encontrada' });
-    }
+//     if (!reservation) {
+//       return res.status(404).json({ message: 'Reserva no encontrada' });
+//     }
     
-    // Verificar que el paquete existe
-    const packageExists = await Package.findByPk(package_id);
-    if (!packageExists) {
-      return res.status(404).json({ message: 'El paquete seleccionado no existe' });
-    }
+//     // Verificar que el paquete existe
+//     const packageExists = await Package.findByPk(package_id);
+//     if (!packageExists) {
+//       return res.status(404).json({ message: 'El paquete seleccionado no existe' });
+//     }
     
-    await reservation.update({
-      name,
-      email,
-      package_id,
-      reservation_date
-    });
+//     await reservation.update({
+//       name,
+//       email,
+//       package_id,
+//       reservation_date
+//     });
     
-    res.json(reservation);
-  } catch (error) {
-    console.error('Error al actualizar reserva:', error);
-    res.status(500).json({ message: 'Error al actualizar reserva' });
-  }
-};
+//     res.json(reservation);
+//   } catch (error) {
+//     console.error('Error al actualizar reserva:', error);
+//     res.status(500).json({ message: 'Error al actualizar reserva' });
+//   }
+// };
 
 // Eliminar una reserva (solo admin)
 exports.deleteReservation = async (req, res) => {

@@ -22,8 +22,14 @@ const sequelize = new Sequelize(
   }
 );
 
-Package.hasMany(Reservation, { foreignKey: 'package_id' });
-Reservation.belongsTo(Package, { foreignKey: 'package_id' });
+//importar modelos
+const Packages = require('./packages.model')(sequelize, DataTypes)
+const Reservations = require('./reservations.model')(sequelize, DataTypes)
+const AdminUsers = require('./admin_users.model')(sequelize, DataTypes)
+
+//relaciones
+Packages.hasMany(Reservations, { foreignKey: 'package_id' });
+Reservations.belongsTo(Packages, { foreignKey: 'package_id' });
 
 module.exports = {
   sequelize,

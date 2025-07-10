@@ -12,8 +12,7 @@ function AdminReservacion() {
       email: "juan@email.com",
       paquete: "Aventura en la Montaña",
       fecha: "2024-02-15",
-      personas: 2,
-      estado: "Pendiente",
+      personas: 2
     },
     {
       id: 2,
@@ -21,8 +20,7 @@ function AdminReservacion() {
       email: "maria@email.com",
       paquete: "Expedición al Lago",
       fecha: "2024-02-20",
-      personas: 4,
-      estado: "Confirmada",
+      personas: 4
     },
     {
       id: 3,
@@ -30,38 +28,14 @@ function AdminReservacion() {
       email: "carlos@email.com",
       paquete: "Tour Fotográfico",
       fecha: "2024-02-25",
-      personas: 1,
-      estado: "Cancelada",
+      personas: 1
     },
-  ])
-
-  const getEstadoClass = (estado) => {
-    switch (estado) {
-      case "Confirmada":
-        return "confirmada"
-      case "Pendiente":
-        return "pendiente"
-      case "Cancelada":
-        return "cancelada"
-      default:
-        return ""
-    }
-  }
+  ]);
 
   return (
     <AdminLayout>
       <div className="admin-reservaciones">
         <h1>Gestión de Reservaciones</h1>
-
-        <div className="filtros">
-          <select className="filtro-estado">
-            <option value="">Todos los estados</option>
-            <option value="pendiente">Pendientes</option>
-            <option value="confirmada">Confirmadas</option>
-            <option value="cancelada">Canceladas</option>
-          </select>
-        </div>
-
         <div className="tabla-container">
           <table className="tabla-reservaciones">
             <thead>
@@ -72,7 +46,6 @@ function AdminReservacion() {
                 <th>Paquete</th>
                 <th>Fecha</th>
                 <th>Personas</th>
-                <th>Estado</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -86,11 +59,8 @@ function AdminReservacion() {
                   <td>{reserva.fecha}</td>
                   <td>{reserva.personas}</td>
                   <td>
-                    <span className={`estado-reserva ${getEstadoClass(reserva.estado)}`}>{reserva.estado}</span>
-                  </td>
-                  <td>
                     <button className="boton-ver">Ver</button>
-                    <button className="boton-editar">Editar</button>
+                    <button className="boton-eliminar">Eliminar</button>
                   </td>
                 </tr>
               ))}
