@@ -20,8 +20,8 @@ function App() {
         <Routes>
           {/* rutas publcias */}
           <Route path="/" element={<Home />} />
-          <Route path="/paquete/:id" element={<PaqueteDetalles />} />
-          <Route path="/reservar/:id" element={<ReservarPaquete />} />
+          <Route path="/packages/:id" element={<PaqueteDetalles />} />
+          <Route path="/reservations/:id" element={<ReservarPaquete />} />
           <Route path="/reserva-confirmada" element={<ReservaConfirmada />} />
 
           {/* rutas admin privadas */}

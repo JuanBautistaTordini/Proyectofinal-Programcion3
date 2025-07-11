@@ -1,41 +1,33 @@
 "use client"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Header from "../../components/layout/Header"
 import Banner from "../../components/layout/Banner"
 import ProductCard from "../../components/layout/ProductCard"
 import Data from "../../components/layout/Data"
 import Footer from "../../components/layout/Footer"
+import { getAllPackages } from "../../services/packageService"
 
 function Home() {
   const navigate = useNavigate()
+  const [paquetes, setPaquetes] = useState([])
 
-  const paquetes = [
-    {
-      id: 1,
-      titulo: "Aventura en la Montaña",
-      descripcion: "Explorá impresionantes cordilleras con nuestros tours guiados",
-      precio: "$299",
-      imagen:
-        "https://blog.chapkadirect.es/wp-content/uploads/2019/03/Hombre-con-los-brazos-abiertos-delante-de-la-laguna-esmeralda-en-la-Patagonia-argentina.jpg",
-    },
-    {
-      id: 2,
-      titulo: "Expedición al Lago",
-      descripcion: "Descubrí lagos prístinos y aguas cristalinas",
-      precio: "$199",
-      imagen: "https://www.cronista.com/files/image/303/303713/5ffe1fa025c8d.jpg",
-    },
-    {
-      id: 3,
-      titulo: "Tour Fotográfico",
-      descripcion: "Capturá paisajes asombrosos con orientación profesional",
-      precio: "$399",
-      imagen: "https://www.rionegro.com.ar/wp-content/uploads/2023/10/patagonia-perito-moreno.jpg",
+  useEffect(() => {
+    const fetchPackages = async () => {
+      try {
+        const data = await getAllPackages()
+        setPaquetes(data)
+        console.log("✅ Paquetes obtenidos:", data)
+      } catch (error) {
+        console.error("❌ Error al obtener paquetes:", error.message)
+      }
     }
-  ]
+
+    fetchPackages()
+  }, [])
 
   const handleCardClick = (id) => {
-    navigate(`/paquete/${id}`)
+    navigate(`/packages/${id}`)
   }
 
   return (

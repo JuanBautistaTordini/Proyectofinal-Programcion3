@@ -60,4 +60,3 @@ exports.getAllReservations = async (req, res) => {
   }
 };
 
-

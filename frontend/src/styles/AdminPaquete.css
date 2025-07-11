@@ -156,3 +156,86 @@
     color: white;
   }
   
+  .editando {
+    background-color: #fff3cd !important;
+    border-left: 4px solid #ffc107;
+  }
+  
+  .vista-previa-nueva {
+    background-color: #d1ecf1 !important;
+    border-left: 4px solid #17a2b8;
+    font-style: italic;
+  }
+  
+  .indicador-editando {
+    color: #ffc107;
+    font-size: 12px;
+  }
+  
+  .indicador-nuevo {
+    color: #17a2b8;
+    font-size: 12px;
+  }
+  
+  .modal-header {
+    margin-bottom: 20px;
+  }
+  
+  .vista-previa-texto {
+    color: #6c757d;
+    display: block;
+    margin-top: 5px;
+  }
+  
+  .modal-content {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  
+  .vista-previa-imagen img {
+    border: 2px solid #dee2e6;
+  }
+  
+  .vista-previa-card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+  }
+  
+  .preview-card {
+    background: white;
+    padding: 10px;
+    border-radius: 4px;
+    border-left: 4px solid #007bff;
+  }
+  
+  .preview-card strong {
+    color: #007bff;
+  }
+  
+  .preview-card p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .formulario-paquete .campo-grupo {
+    margin-bottom: 15px;
+  }
+  
+  .formulario-paquete input,
+  .formulario-paquete textarea {
+    transition: border-color 0.2s ease;
+  }
+  
+  .formulario-paquete input:focus,
+  .formulario-paquete textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }

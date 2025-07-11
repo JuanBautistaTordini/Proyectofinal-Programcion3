@@ -1,3 +1,4 @@
+'use client'
 import  React from "react"
 import "../../styles/Header.css"
 
@@ -6,32 +7,13 @@ function Header() {
     <header className="header">
       <div className="container">
         <div className="container_header">
-          <a href="#" className="logo">
+          <span className="logo">
             Patagonia Trip
-          </a>
+          </span>
           <nav>
-            <ul className="nav-menu">
-              <li>
-                <a href="#" className="nav-link">
-                  Inicio
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link">
-                  Viajes
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link">
-                  Nosotros
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link">
-                  Contactos
-                </a>
-              </li>
-            </ul>
+            <h3 className="nav-menu">
+              50% OFF EN TU PRIMERA RESERVA
+            </h3>
           </nav>
           <button className="boton_cta">Ver Paquetes</button>
         </div>

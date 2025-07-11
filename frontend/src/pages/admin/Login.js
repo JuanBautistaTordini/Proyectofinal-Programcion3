@@ -3,31 +3,39 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "../../styles/AdminLogin.css"
+import { login } from "../../services/auth"
 
 function Login() {
   const navigate = useNavigate()
-  const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
-  })
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+  const [loging, setLoging] = useState(false)
+  const [error, setError] = useState(null)
 
-  // Maneja el cambio de los inputs
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setCredentials((prev) => ({
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
       ...prev,
-      [name]: value,
-    }))
+      [name]: value
+    }));
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Simulación de login, esperar back
-    if (credentials.username === "admin" && credentials.password === "admin123") {
-      localStorage.setItem("adminToken", "authenticated")
-      navigate("/admin/dashboard")
-    } else {
-      alert("Credenciales incorrectas")
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoging(true);
+    setError(null);
+
+    try {
+      await login(formData.email, formData.password);
+      navigate("/admin/dashboard");
+    } catch (err) {
+      console.error('[Login] Error:', err);
+      const userFriendlyMessage = err.message || 'Error de conexión. Intentalo de nuevo.';
+      setError(userFriendlyMessage);
+    } finally {
+      setLoging(false);
     }
   }
 
@@ -37,15 +45,22 @@ function Login() {
       <div className="login-container">
         <div className="login-card">
           <h2>Acceso Administrativo</h2>
+
+          {error && (
+            <div className="error-message">
+              {error}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit}>
             <div className="campo-grupo">
-              <label htmlFor="username">Usuario</label>
+              <label htmlFor="email">Email</label>
               <input
                 type="text"
-                id="username"
-                name="username"
-                value={credentials.username}
-                onChange={handleInputChange}
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 required
               />
             </div>
@@ -56,22 +71,16 @@ function Login() {
                 type="password"
                 id="password"
                 name="password"
-                value={credentials.password}
-                onChange={handleInputChange}
+                value={formData.password}
+                onChange={handleChange}
                 required
               />
             </div>
 
-            <button type="submit" className="boton-login">
-              Iniciar Sesión
+            <button type="submit" className="boton-login" disabled={loging}>
+              {loging ? "Cargando..." : "Iniciar Sesión"}
             </button>
           </form>
-
-          <div className="demo-credentials">
-            <p>
-              <small>Demo: usuario: admin, contraseña: admin123</small>
-            </p>
-          </div>
         </div>
       </div>
     </div>

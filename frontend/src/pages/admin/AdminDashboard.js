@@ -1,35 +1,63 @@
 "use client"
 import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 import AdminLayout from "../../components/layout/AdminLayout"
+import { getAllPackages } from "../../services/packageService"
+import { getAllReservations } from "../../services/reservationService"
 import "../../styles/AdminDashboard.css"
 
 function AdminDashboard() {
   const navigate = useNavigate()
+  const [stats, setStats] = useState({
+    totalPaquetes: 0,
+    totalReservas: 0
+  })
 
-  const stats = [
-    { titulo: "Total Paquetes", valor: "12", icono: "🎒" },
-    { titulo: "Reservas Pendientes", valor: "8", icono: "⏳" },
-    { titulo: "Reservas Confirmadas", valor: "24", icono: "✅" },
-    { titulo: "Ingresos del Mes", valor: "$5,280", icono: "💰" },
-  ]
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const paquetes = await getAllPackages()
+        const response = await getAllReservations()
+        const reservas = response.allReservations
+
+  
+        console.log("Reservas recibidas:", reservas) // <-- acá
+  
+        setStats({
+          totalPaquetes: paquetes.length,
+          totalReservas: reservas.length
+        })
+        
+      } catch (error) {
+        console.error("Error al cargar estadísticas:", error)
+      }
+    }
+  
+    fetchStats()
+  }, [])
+  
 
   return (
     <AdminLayout>
       <div className="admin-dashboard">
         <h1>Dashboard Administrativo</h1>
 
-        <div className="stats-grid">
-          {stats.map((stat, index) => (
-            <div key={index} className="stat-card">
-              <div className="stat-icono">{stat.icono}</div>
-              <div className="stat-info">
-                <h3>{stat.valor}</h3>
-                <p>{stat.titulo}</p>
-              </div>
+        {/* Bloque de estadísticas */}
+        <div className="estadisticas">
+          <h2>Estadísticas</h2>
+          <div className="stats-grid">
+            <div className="stat-card">
+              <span className="stat-titulo">Total Paquetes</span>
+              <span className="stat-valor">{stats.totalPaquetes}</span>
             </div>
-          ))}
+            <div className="stat-card">
+              <span className="stat-titulo">Total Reservas</span>
+              <span className="stat-valor">{stats.totalReservas}</span>
+            </div>
+          </div>
         </div>
 
+        {/* Acciones rápidas */}
         <div className="acciones-rapidas">
           <h2>Acciones Rápidas</h2>
           <div className="botones-accion">

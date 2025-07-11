@@ -1,31 +1,64 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import Footer from "../../components/layout/Footer"
 import "../../styles/ReservarPaquete.css"
 import Header from "../../components/layout/Header"
+import { getPackageById } from "../../services/packageService"
+import { createReservation } from "../../services/reservationService"
+
 
 function ReservarPaquete() {
+  const today = new Date().toISOString().split("T")[0];
   const { id } = useParams()
   const navigate = useNavigate()
+
+  const [paquete, setPaquete] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
-    telefono: "",
-    fechaViaje: "",
-    numeroPersonas: 1,
-    comentarios: "",
+    fechaViaje: ""
   })
+  
 
-  const paquetes = {
-    1: { titulo: "Aventura en la Montaña", precio: "$299", imagen: "https://blog.chapkadirect.es/wp-content/uploads/2019/03/Hombre-con-los-brazos-abiertos-delante-de-la-laguna-esmeralda-en-la-Patagonia-argentina.jpg" },
-    2: { titulo: "Expedición al Lago", precio: "$199", imagen: "https://www.cronista.com/files/image/303/303713/5ffe1fa025c8d.jpg" },
-    3: { titulo: "Tour Fotográfico", precio: "$399", imagen: "https://www.rionegro.com.ar/wp-content/uploads/2023/10/patagonia-perito-moreno.jpg" },
+  useEffect(() => {
+    const fetchPaquete = async () => {
+      try {
+        const data = await getPackageById(id)
+        setPaquete(data)
+      } catch (err) {
+        console.error("❌ Error al cargar paquete:", err)
+        setError("Error al cargar el paquete.")
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchPaquete()
+  }, [id])
+
+  //pendiente
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+  
+    try {
+      await createReservation({
+        name: formData.nombre,
+        email: formData.email,
+        reservation_date: formData.fechaViaje,
+        package_id: id
+      })
+  
+      navigate("/reserva-confirmada")
+    } catch (error) {
+      console.error("Error al enviar reserva:", error)
+      alert("Hubo un error al enviar tu reserva.")
+    }
   }
-
-  const paquete = paquetes[id]
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -34,13 +67,11 @@ function ReservarPaquete() {
       [name]: value,
     }))
   }
+  
+  if (loading) return <p className="loading">Cargando paquete...</p>
+  if (error) return <p className="error">{error}</p>
+  if (!paquete) return <p className="error">Paquete no encontrado</p>
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Aquí enviarías los datos a tu backend
-    console.log("Reserva enviada:", { ...formData, paqueteId: id })
-    navigate("/reserva-confirmada")
-  }
 
   return (
     <>
@@ -58,12 +89,12 @@ function ReservarPaquete() {
                 <h2>Resumen del Paquete</h2>
                 <div className="reserva-paquete-card">
                   <div className="reserva-paquete-imagen">
-                    <img src={paquete.imagen || "/placeholder.svg"} alt={paquete.titulo} className="imagen-paquete" />
-                    <div className="precio-badge">{paquete.precio}</div>
+                    <img src={paquete.image_url || "/placeholder.svg"} alt={paquete.title} className="imagen-paquete" />
+                    <div className="precio-badge">{paquete.price}</div>
                   </div>
                   <div className="reserva-paquete-detalles">
-                    <h3>{paquete.titulo}</h3>
-                    <p className="descripcion">{paquete.descripcion}</p>
+                    <h3>{paquete.title}</h3>
+                    <p className="descripcion">{paquete.descrition}</p>
                     <div className="caracteristicas">
                       <div className="caracteristica">
                         <span className="icono">📍</span>
@@ -110,35 +141,6 @@ function ReservarPaquete() {
                   </div>
                 </div>
 
-                <div className="campos-fila">
-                  <div className="campo-grupo">
-                    <label htmlFor="telefono">Teléfono *</label>
-                    <input
-                      type="tel"
-                      id="telefono"
-                      name="telefono"
-                      value={formData.telefono}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  <div className="campo-grupo">
-                    <label htmlFor="numeroPersonas">Número de Personas</label>
-                    <select
-                      id="numeroPersonas"
-                      name="numeroPersonas"
-                      value={formData.numeroPersonas}
-                      onChange={handleInputChange}
-                    >
-                      {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                        <option key={num} value={num}>
-                          {num} {num === 1 ? "persona" : "personas"}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
                 <div className="campo-grupo">
                   <label htmlFor="fechaViaje">Fecha de Viaje *</label>
                   <input
@@ -147,19 +149,8 @@ function ReservarPaquete() {
                     name="fechaViaje"
                     value={formData.fechaViaje}
                     onChange={handleInputChange}
+                    min={today}
                     required
-                  />
-                </div>
-
-                <div className="campo-grupo">
-                  <label htmlFor="comentarios">Comentarios Adicionales</label>
-                  <textarea
-                    id="comentarios"
-                    name="comentarios"
-                    value={formData.comentarios}
-                    onChange={handleInputChange}
-                    rows="4"
-                    placeholder="Por ejemplo, alergias, preferencias de comida, etc."
                   />
                 </div>
 
