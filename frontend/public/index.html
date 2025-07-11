@@ -47,7 +47,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #667eea 0%, #3498db 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -96,8 +96,7 @@
   <!-- Loading screen mientras React carga -->
   <div id="loading" class="loading-container">
     <div class="loading-spinner"></div>
-    <div class="loading-text">Cargando aplicación</div>
-    <div class="loading-subtitle">Inicializando componentes...</div>
+    <div class="loading-text">Cargando...</div>
   </div>
 
   <!-- Contenedor principal donde React se monta -->
@@ -156,20 +155,5 @@
     Happy coding! 🎉
     `);
   </script>
-
-  <!-- Service Worker para PWA (opcional) -->
-  <!-- <script>
-    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('%PUBLIC_URL%/sw.js')
-          .then((registration) => {
-            console.log('SW registered: ', registration);
-          })
-          .catch((registrationError) => {
-            console.log('SW registration failed: ', registrationError);
-          });
-      });
-    }
-  </script> -->
 </body>
 </html>

@@ -3,19 +3,30 @@ import  React from "react"
 import "../../styles/Header.css"
 
 function Header() {
+  const handleScrollToAventura = (e) => {
+    e.preventDefault()
+    const target = document.getElementById('tu-aventura')
+  
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+  
   return (
     <header className="header">
       <div className="container">
         <div className="container_header">
-          <span className="logo">
+          <h2 className="logo">
             Patagonia Trip
-          </span>
+          </h2>
           <nav>
-            <h3 className="nav-menu">
+            <h2 className="nav-menu">
               50% OFF EN TU PRIMERA RESERVA
-            </h3>
+            </h2>
           </nav>
-          <button className="boton_cta">Ver Paquetes</button>
+          <a href="#tu-aventura" className="boton_primario" onClick={handleScrollToAventura}>
+            Ver Paquetes
+          </a>
         </div>
       </div>
     </header>

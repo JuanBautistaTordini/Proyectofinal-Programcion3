@@ -43,7 +43,7 @@ function AdminLayout({ children }) {
       <main className="admin-main">
         <header className="admin-header">
           <div className="sidebar-header">
-            <h2>Patagonia Trip Administracion</h2>
+            <h2 className="logo-admin">Patagonia Trip Administracion</h2>
           </div>
           <button className="home-btn" onClick={() => navigate("/")}>
              Ver Sitio Público

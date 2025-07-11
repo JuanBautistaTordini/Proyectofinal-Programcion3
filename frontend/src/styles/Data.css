@@ -25,7 +25,7 @@
 .icono_data {
   width: 80px;
   height: 80px;
-  background-color: #46a0db;
+  background-color: #82cafa;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -34,6 +34,12 @@
   font-size: 2rem;
   color: white;
 }
+
+.icono_data svg {
+  width: 40px;
+  height: 40px;
+}
+
 
 .titulo_data {
   font-size: 1.5rem;

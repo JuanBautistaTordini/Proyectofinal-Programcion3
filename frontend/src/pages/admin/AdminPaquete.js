@@ -112,19 +112,19 @@ function AdminPaquete() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    // Validación simple
+  
+    // Validaciones
     if (!title.trim() || !description.trim()) {
       alert("Título y descripción son obligatorios.")
       return
     }
-
+  
     const precioNum = Number.parseFloat(price)
     if (isNaN(precioNum) || precioNum < 0) {
       alert("El precio debe ser un número válido y positivo.")
       return
     }
-
+  
     const packageData = {
       title: title.trim(),
       description: description.trim(),
@@ -132,21 +132,22 @@ function AdminPaquete() {
       price: precioNum,
       image_url: imageUrl.trim(),
     }
-
+  
     try {
+      // Crear o actualizar
       if (paqueteEditando) {
         const actualizado = await updatePackage(paqueteEditando.id, packageData)
         setPaquetes(paquetes.map((p) => (p.id === actualizado.id ? actualizado : p)))
       } else {
-        const creado = await createPackage(packageData)
-        if (creado) {
-          setPaquetes([...paquetes, creado])
-        } else {
-          alert("Error: no se pudo crear el paquete correctamente.")
-        }
+        await createPackage(packageData)
+  
+        // 🔄 Refrescar paquetes desde el backend para evitar errores visuales como NaN
+        const respuesta = await getAllPackages()
+        const paquetesActualizados = respuesta.allPackages || respuesta
+        setPaquetes(paquetesActualizados)
       }
-
-      // Limpieza
+  
+      // Limpiar formulario
       setMostrarFormulario(false)
       setPaqueteEditando(null)
       setBackupPaquete(null)
@@ -161,6 +162,7 @@ function AdminPaquete() {
       alert(error.message || "Hubo un error al guardar el paquete")
     }
   }
+  
 
   const handleCancelar = () => {
     if (paqueteEditando && backupPaquete) {
@@ -234,20 +236,22 @@ function AdminPaquete() {
                   <td>{paquete.location}</td>
                   <td>${Number(paquete.price).toFixed(2)}</td>
                   <td>
-                    <button
-                      className="boton-editar"
-                      onClick={() => handleEditar(paquete)}
-                      disabled={paqueteEditando?.id === paquete.id}
-                    >
-                      {paqueteEditando?.id === paquete.id ? "Editando..." : "Editar"}
-                    </button>
-                    <button
-                      className="boton-eliminar"
-                      onClick={() => pedirConfirmacionEliminar(paquete)}
-                      disabled={paqueteEditando?.id === paquete.id}
-                    >
-                      Eliminar
-                    </button>
+                    <div className="acciones-paquete">
+                      <button
+                        className="boton_editar"
+                        onClick={() => handleEditar(paquete)}
+                        disabled={paqueteEditando?.id === paquete.id}
+                      >
+                        {paqueteEditando?.id === paquete.id ? "Editando..." : "Editar"}
+                      </button>
+                      <button
+                        className="boton-eliminar"
+                        onClick={() => pedirConfirmacionEliminar(paquete)}
+                        disabled={paqueteEditando?.id === paquete.id}
+                      >
+                        Eliminar
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

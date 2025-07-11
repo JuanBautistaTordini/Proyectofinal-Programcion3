@@ -36,7 +36,7 @@ function Home() {
       <Banner />
       <section className="productos-section">
         <div className="container">
-          <h2>Tu Próxima Aventura</h2>
+          <h2 id="tu-aventura">Tu proxima aventura</h2>
           <div className="products-grid">
             {paquetes.map((paquete) => (
               <div key={paquete.id} onClick={() => handleCardClick(paquete.id)}>

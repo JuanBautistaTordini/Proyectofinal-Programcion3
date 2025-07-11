@@ -1,71 +1,87 @@
-.admin-dashboard h1 {
-    color: #2c3e50;
-    margin-bottom: 2rem;
-  }
+.estadisticas {
+  margin-bottom: 2rem;
+}
 
-  .estadisticas {
-    margin-bottom: 2rem;
-  }
-  
-  .stats-grid {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  
-  .stat-card {
-    background-color: #f5f5f5;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    min-width: 180px;
-    text-align: center;
-  }
-  
-  .stat-titulo {
-    display: block;
-    font-weight: 600;
-    color: #555;
-  }
-  
-  .stat-valor {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  
-  .acciones-rapidas {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .acciones-rapidas h2 {
-    color: #2c3e50;
-    margin-bottom: 1.5rem;
-  }
-  
-  .botones-accion {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  
-  .boton-accion {
-    padding: 1rem 2rem;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: 600;
-  }
-  
-  .boton-accion:hover {
-    background-color: #2980b9;
-  }
-  
+.stats-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  background-color: #f5f5f5;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  flex: 1;
+  min-width: 180px;
+
+  text-align: left;
+}
+
+.stat-texto {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-titulo {
+  font-weight: 600;
+  color: #555;
+}
+
+.stat-valor {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.icon-paquetes svg,
+.icon-reservas svg {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+}
+
+/* Opcional: estilos para h2 */
+.estadisticas h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.acciones-rapidas {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.acciones-rapidas h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.botones-accion {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.boton-accion {
+  padding: 1rem 2rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+.boton-accion:hover {
+  background-color: #2980b9;
+}
